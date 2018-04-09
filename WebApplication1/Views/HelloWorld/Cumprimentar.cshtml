@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Cumprimentar";
+}
+
+<h2>Cumprimetar</h2>
+
+<ul>
+    @for (int i = 0; i < (int)ViewData["Repetir"]; i++)
+    {
+        <li>@ViewData["Mensagem"]</li>
+    }
+</ul>
