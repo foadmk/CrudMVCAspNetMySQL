@@ -1,8 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Cryptography;
-using System.Text;
+using WebApplication1.Services;
 
 namespace WebApplication1.Models
 {
@@ -19,30 +18,16 @@ namespace WebApplication1.Models
         public string Nome { get; set; }
 
 
-        
 
-        private string senha { get; set; }
-
+        [StringLength(255, ErrorMessage = "A senha deve ter pelo menos 5 caracteres", MinimumLength = 5)]
         [Display(Name = "Senha")]
         [Required(ErrorMessage = "A senha é obrigatória")]
-        [StringLength(255, ErrorMessage = "A senha deve ter pelo menos 5 caracteres", MinimumLength = 5)]
         [DataType(DataType.Password)]
-        public string Senha
+        public string Senha { get; set; }
+
+        public void HashPassword()
         {
-            get
-            {
-                return senha;
-            }
-            set
-            {
-                byte[] data = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(value));
-                StringBuilder sBuilder = new StringBuilder();
-                for (int i = 0; i < data.Length; i++)
-                {
-                    sBuilder.Append(data[i].ToString("x2"));
-                }
-                senha = sBuilder.ToString();
-            }
+            Senha = HashCalculator.GenerateMD5(Senha);            
         }
 
         [Display(Name = "CPF")]

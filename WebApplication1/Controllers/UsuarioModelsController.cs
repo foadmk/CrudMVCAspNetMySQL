@@ -57,6 +57,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
+                usuarioModel.HashPassword(); //CRIPTOGRAFA SENHA
                 _context.Add(usuarioModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -77,6 +78,7 @@ namespace WebApplication1.Controllers
             {
                 return NotFound();
             }
+            usuarioModel.Senha = "";  //ADICIONADO PARA FORCAR O USUARIO A COLOCAR UM NOVO PASSWORD
             return View(usuarioModel);
         }
 
@@ -96,6 +98,7 @@ namespace WebApplication1.Controllers
             {
                 try
                 {
+                    usuarioModel.HashPassword(); //CRIPTOGRAFA SENHA
                     _context.Update(usuarioModel);
                     await _context.SaveChangesAsync();
                 }
@@ -125,6 +128,7 @@ namespace WebApplication1.Controllers
 
             var usuarioModel = await _context.UsuarioModel
                 .SingleOrDefaultAsync(m => m.ID == id);
+
             if (usuarioModel == null)
             {
                 return NotFound();

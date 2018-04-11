@@ -12,6 +12,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
+        "SECRET": "ChaveSecretaKJFOGOWNOIGOIEFNKVMKJ3I4HUH",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },

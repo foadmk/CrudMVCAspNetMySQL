@@ -22,7 +22,7 @@ namespace WebApplication1.Controllers
         // GET: /HelloWorld/BemVindo/ 
         public string BemVindo()
         {
-            return "Bem vindo ao seu controller!";
+            return Environment.GetEnvironmentVariable("SECRET");
         }
 
         // GET: /HelloWorld/Cumprimentar?nome=[NOME]&repetir=[NUM]
