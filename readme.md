@@ -6,7 +6,10 @@ CRUD utilizando MVC em ASP.NET contendo:
 - Exemplos de Controladores Customizados
 
 
-References: 
+References:
+
 https://jonhilton.net/2017/10/11/secure-your-asp.net-core-2.0-api-part-1---issuing-a-jwt/
+
 https://www.asp.net/mvc
+
 https://jwt.io
